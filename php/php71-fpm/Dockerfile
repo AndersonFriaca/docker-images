@@ -42,7 +42,7 @@ WORKDIR /var/www/html/
 
 RUN	curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY	./scripts/ /usr/sbin/scripts
+COPY	scripts/ /usr/sbin/scripts
 
 RUN	chmod -R +x /usr/sbin/scripts && \
 	/usr/sbin/scripts/additionals/install-additionals.sh
@@ -50,7 +50,7 @@ RUN	chmod -R +x /usr/sbin/scripts && \
 RUN     mkdir /run/php-fpm && \
         rm /etc/php-fpm.d/www.conf     
 
-ADD     ./php.conf/php-fpm.d/www.conf /etc/php-fpm.d/
+ADD     php.conf/php-fpm.d/www.conf /etc/php-fpm.d/
 
 EXPOSE  9000
 
